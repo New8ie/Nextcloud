@@ -2,12 +2,13 @@ Nextcloud
 ===
 <!--rehype:style=font-size: 38px; border-bottom: 0; display: flex; min-height: 260px; align-items: center; justify-content: center;-->
 
-Nextcloud is a great system for setting up your personal cloud and sharing with friends.  It can be frustrating when it is slow.  Let's get nextcloud entirely setup and optimized for performance on your server!
+Nextcloud is a great application for your personal cloud. It will be not functioning when it is error or slow.  this is a installation setup and optimized for performance on your home 
+server!
 
 * PHP 8.3 is out.  Nextcloud currently will NOT run on php8.3.  Many required php packages for php8.3 are not out yet, such as intl, mysql, curl, and others*
 * This guide has been updated to specify installing php 8.2 packages, be sure you are running php8.2!*
-* Nextcloud 30 is out, it also wants you to install bz2 php extension*
-* sudo apt-get install php8.2-bz2*
+* Nextcloud version 30 
+
 
 # Debian 12 Setup installation
 ```bash
@@ -36,7 +37,7 @@ sudo a2dismod mpm_prefork
 ```bash
 sudo nano /etc/memcached.conf 
 ```
-  * memory value 64 to 1024
+  * memory value 64 to 2048
 
 # Edit file www.conf
 ```bash
@@ -57,12 +58,12 @@ sudo nano /etc/php/8.2/fpm/pool.d/www.conf
 ```bash
 sudo nano /etc/php/8.2/fpm/php.ini
 ```
-* memory_limit = 1024M
+* memory_limit = 2048M
 * post_max_size = 512M
-* upload_max_filesize = 1024M
+* upload_max_filesize = 10240M
 down in opcache settings:
 * opcache.enable=1
-* opcache.memory_consumption=1024
+* opcache.memory_consumption=2048
 * opcache.interned_strings_buffer=64
 * opcache.max_accelerated_files=150000
 * opcache.max_wasted_percentage=15
@@ -101,12 +102,12 @@ sudo systemctl restart php8.2-fpm
 ```
 Open website and continue nextcloud isntallation on new website
 
-# Edit file php.ini
+# Edit file Config.php
 ```bash
 sudo nano /var/www/nextcloud/config/config.php
 ```
 Grab the code to add from here:
-https://github.com/jhodak/linux-confi...
+https:/
 
 just in case
 ```bash
@@ -116,19 +117,19 @@ sudo systemctl restart apache2
 Your nextcloud should now be running optimally!
 
 *Optional but highly recommended*
+
 Enable OCC -- nextcloud command line function
-
+```bash
 sudo nano /etc/php/8.2/mods-available/apcu.ini
-
-add the following line at the bottom:
+```
+* add the following line at the bottom:
 apc.enable_cli=1
 
-save and exit
-
-in nextcloud go to
+* in nextcloud go to
 administration settings  -- basic settings -- change from Ajax to Cron (recommended)
 
 if you want to test if cron is working
+```bash
 sudo -u www-data php -f /var/www/nextcloud/cron.php
-
+```
 if you see nothing it is working, if you get an error it is not working
