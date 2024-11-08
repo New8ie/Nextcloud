@@ -30,11 +30,11 @@ paste in the code from here:
 - sudo a2enmod headers rewrite mpm_event http2 mime proxy proxy_fcgi setenvif alias dir env ssl proxy_http proxy_wstunnel
 - sudo a2dismod mpm_prefork
 
-Edit file memcached.conf
+# Edit file memcached.conf
 - sudo nano /etc/memcached.conf 
   * memory value 64 to 1024
 
-Edit file www.conf
+# Edit file www.conf
 - sudo nano /etc/php/8.2/fpm/pool.d/www.conf
   * max_children = 80
   * start_servers = 20
@@ -47,25 +47,21 @@ Edit file www.conf
   * env[TMPDIR] = /tmp
   * env[TEMP] = /tmp
 
-
-sudo nano /etc/php/8.2/fpm/php.ini
-
-memory_limit = 1024M
-post_max_size = 512M
-upload_max_filesize = 1024M
-
+# Edit file php.ini
+- sudo nano /etc/php/8.2/fpm/php.ini
+* memory_limit = 1024M
+* post_max_size = 512M
+* upload_max_filesize = 1024M
 down in opcache settings:
-opcache.enable=1
-opcache.memory_consumption=1024
-opcache.interned_strings_buffer=64
-opcache.max_accelerated_files=150000
-opcache.max_wasted_percentage=15
-opcache.revalidate_freq=60
-opcache.save_comments=1
-opcache.jit=1255
-opcache.jit_buffer_size=256M
-
-save and exit
+* opcache.enable=1
+* opcache.memory_consumption=1024
+* opcache.interned_strings_buffer=64
+* opcache.max_accelerated_files=150000
+* opcache.max_wasted_percentage=15
+* opcache.revalidate_freq=60
+* opcache.save_comments=1
+* opcache.jit=1255
+* opcache.jit_buffer_size=256M
 
 setup MariaDB
 sudo mysql
