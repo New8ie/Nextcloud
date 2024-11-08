@@ -24,16 +24,12 @@ Create File nextcloud.conf
 paste in the code from here:
 (https://github.com/New8ie/nextcloud/)
 
-# Enable PHP Config
-
+# Enable PHP Config & Add Exention
 - sudo a2enconf php8.2-fpm
 - sudo a2ensite nextcloud.conf
-
-sudo apt-get install imagemagick php8.2-imagick memcached libmemcached-tools php8.2-memcached php8.2-apcu mariadb-server php8.2-gd php8.2-mysql php8.2-curl php8.2-mbstring php8.2-intl php8.2-gmp php8.2-bcmath php8.2-xml php8.2-zip unzip smbclient
-
-sudo a2enmod headers rewrite mpm_event http2 mime proxy proxy_fcgi setenvif alias dir env ssl proxy_http proxy_wstunnel
-
-sudo a2dismod mpm_prefork
+- sudo apt-get install imagemagick php8.2-imagick memcached libmemcached-tools php8.2-memcached php8.2-apcu mariadb-server php8.2-gd php8.2-mysql php8.2-curl php8.2-mbstring php8.2-intl php8.2-gmp php8.2-bcmath php8.2-xml php8.2-zip unzip smbclient
+- sudo a2enmod headers rewrite mpm_event http2 mime proxy proxy_fcgi setenvif alias dir env ssl proxy_http proxy_wstunnel
+- sudo a2dismod mpm_prefork
 
 sudo nano /etc/memcached.conf
 change 64 to 1024
