@@ -1,4 +1,4 @@
-# Nextcloud
+# # ###### Nextcloud
 
 Nextcloud is a great system for setting up your personal cloud and sharing with friends.  It can be frustrating when it is slow.  Let's get nextcloud entirely setup and optimized for performance on your server!
 
@@ -63,19 +63,23 @@ down in opcache settings:
 * opcache.jit=1255
 * opcache.jit_buffer_size=256M
 
-setup MariaDB
-sudo mysql
+# Setup MariaDB
+- sudo apt install mariadb-server
+- sudo systemctl is-enabled mariadb
+- sudo mysql_secure_installation
 
-CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+* Create a new database and user for Nextcloud. Log in to MariaDB using the following command:
+
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'changeme';
 CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost';
 FLUSH PRIVILEGES;
+- Check privileges user MariaDB 
+SHOW GRANTS FOR 'admin'@'localhost';
 
-quit;
 
 cd /var/www
-
-sudo wget https://download.nextcloud.com/server...
+sudo wget 
 sudo unzip nextcloud-27.1.4.zip
 sudo chown -R www-data:www-data /var/www/nextcloud
 
