@@ -9,20 +9,19 @@ Nextcloud is a great system for setting up your personal cloud and sharing with 
 * Nextcloud 30 is out, it also wants you to install bz2 php extension*
 * sudo apt-get install php8.2-bz2*
 
-
-# Server Debian 12 Setup 
-
+# Debian 12 Setup installation
+```bash
 - sudo apt-get update
 - sudo apt-get upgrade
 - sudo apt-get install software-properties-common
 - sudo apt-get install apache2 php8.2-fpm
-
+```
 Create File nextcloud.conf
-
+```bash
 - sudo nano /etc/apache2/sites-available/nextcloud.conf
-
+```
 paste in the code from here:
-(https://github.com/New8ie/nextcloud/)
+(https://github.com/New8ie/Nextcloud/blob/3b237b1bf250ca77921f3b36ba8fb2309db92f81/Apache/nextcloud.conf)
 
 # Enable PHP Config & Add Exention
 
