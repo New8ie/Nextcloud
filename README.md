@@ -1,4 +1,4 @@
-# Nextloud
+# Nextcloud
 
 Nextcloud is a great system for setting up your personal cloud and sharing with friends.  It can be frustrating when it is slow.  Let's get nextcloud entirely setup and optimized for performance on your server!
 
