@@ -92,8 +92,8 @@ SHOW GRANTS FOR 'admin'@'localhost';
 # Downloading Nextcloud Source Code
 ```bash
 cd /var/www
-sudo wget 
-sudo unzip nextcloud-27.1.4.zip
+sudo wget https://download.nextcloud.com/server/releases/latest.zip
+sudo unzip latest.zip
 sudo chown -R www-data:www-data /var/www/nextcloud
 sudo systemctl restart apache2
 sudo systemctl restart memcached
