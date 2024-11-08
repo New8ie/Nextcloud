@@ -11,32 +11,37 @@ Nextcloud is a great system for setting up your personal cloud and sharing with 
 
 # Debian 12 Setup installation
 ```bash
-- sudo apt-get update
-- sudo apt-get upgrade
-- sudo apt-get install software-properties-common
-- sudo apt-get install apache2 php8.2-fpm
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install software-properties-common
+sudo apt-get install apache2 php8.2-fpm
 ```
 Create File nextcloud.conf
 ```bash
-- sudo nano /etc/apache2/sites-available/nextcloud.conf
+sudo nano /etc/apache2/sites-available/nextcloud.conf
 ```
-paste in the code from here:
+Paste in the code from here:
+
 (https://github.com/New8ie/Nextcloud/blob/3b237b1bf250ca77921f3b36ba8fb2309db92f81/Apache/nextcloud.conf)
 
 # Enable PHP Config & Add Exention
-
-- sudo a2enconf php8.2-fpm
-- sudo a2ensite nextcloud.conf
-- sudo apt-get install imagemagick php8.2-imagick memcached libmemcached-tools php8.2-memcached php8.2-apcu mariadb-server php8.2-gd php8.2-mysql php8.2-curl php8.2-mbstring php8.2-intl php8.2-gmp php8.2-bcmath php8.2-xml php8.2-zip unzip smbclient
-- sudo a2enmod headers rewrite mpm_event http2 mime proxy proxy_fcgi setenvif alias dir env ssl proxy_http proxy_wstunnel
-- sudo a2dismod mpm_prefork
-
+```bash
+sudo a2enconf php8.2-fpm
+sudo a2ensite nextcloud.conf
+sudo apt-get install imagemagick php8.2-imagick memcached libmemcached-tools php8.2-memcached php8.2-apcu mariadb-server php8.2-gd php8.2-mysql php8.2-curl php8.2-mbstring php8.2-intl php8.2-gmp php8.2-bcmath php8.2-xml php8.2-zip unzip smbclient
+sudo a2enmod headers rewrite mpm_event http2 mime proxy proxy_fcgi setenvif alias dir env ssl proxy_http proxy_wstunnel
+sudo a2dismod mpm_prefork
+```
 # Edit file memcached.conf
-- sudo nano /etc/memcached.conf 
+```bash
+sudo nano /etc/memcached.conf 
+```
   * memory value 64 to 1024
 
 # Edit file www.conf
-- sudo nano /etc/php/8.2/fpm/pool.d/www.conf
+```bash
+sudo nano /etc/php/8.2/fpm/pool.d/www.conf
+```  
   * max_children = 80
   * start_servers = 20
   * min_spare_servers = 20
@@ -49,7 +54,9 @@ paste in the code from here:
   * env[TEMP] = /tmp
 
 # Edit file php.ini
-- sudo nano /etc/php/8.2/fpm/php.ini
+```bash
+sudo nano /etc/php/8.2/fpm/php.ini
+```
 * memory_limit = 1024M
 * post_max_size = 512M
 * upload_max_filesize = 1024M
@@ -65,39 +72,46 @@ down in opcache settings:
 * opcache.jit_buffer_size=256M
 
 # Setup MariaDB
-- sudo apt install mariadb-server
-- sudo systemctl is-enabled mariadb
-- sudo mysql_secure_installation
-
+```bash
+sudo apt install mariadb-server
+sudo systemctl is-enabled mariadb
+sudo mysql_secure_installation
+```
 * Create a new database and user for Nextcloud. Log in to MariaDB using the following command:
-
+```bash
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'changeme';
 CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 GRANT ALL PRIVILEGES ON nextcloud.* TO 'username'@'localhost';
 FLUSH PRIVILEGES;
+```
 - Check privileges user MariaDB 
+```bash
 SHOW GRANTS FOR 'admin'@'localhost';
+```
 
-
+# Downloading Nextcloud Source Code
+```bash
 cd /var/www
 sudo wget 
 sudo unzip nextcloud-27.1.4.zip
 sudo chown -R www-data:www-data /var/www/nextcloud
-
 sudo systemctl restart apache2
 sudo systemctl restart memcached
 sudo systemctl restart php8.2-fpm
+```
+Open website and continue nextcloud isntallation on new website
 
-open website and continue nextcloud isntallation on new website
-
+# Edit file php.ini
+```bash
 sudo nano /var/www/nextcloud/config/config.php
-
-grab the code to add from here:
+```
+Grab the code to add from here:
 https://github.com/jhodak/linux-confi...
 
-save and exit
-
-sudo systemctl restart apache2 just in case.
+just in case
+```bash
+sudo systemctl restart apache2 
+```
 
 Your nextcloud should now be running optimally!
 
