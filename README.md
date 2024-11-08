@@ -1,31 +1,33 @@
-# nextcloud
+# Nextloud
+
 Nextcloud is a great system for setting up your personal cloud and sharing with friends.  It can be frustrating when it is slow.  Let's get nextcloud entirely setup and optimized for performance on your server!
 
 * PHP 8.3 is out.  Nextcloud currently will NOT run on php8.3.  Many required php packages for php8.3 are not out yet, such as intl, mysql, curl, and others*
 
 * This guide has been updated to specify installing php 8.2 packages, be sure you are running php8.2!*
 
-*Nextcloud 30 is out, it also wants you to install bz2 php extension*
-*sudo apt-get install php8.2-bz2*
+* Nextcloud 30 is out, it also wants you to install bz2 php extension*
+* sudo apt-get install php8.2-bz2*
 
 
-Server Debian 12 Setup 
+# Server Debian 12 Setup 
 
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install software-properties-common
-sudo apt-get install apache2 php8.2-fpm
+- sudo apt-get update
+- sudo apt-get upgrade
+- sudo apt-get install software-properties-common
+- sudo apt-get install apache2 php8.2-fpm
 
 Create File nextcloud.conf
 
-sudo nano /etc/apache2/sites-available/nextcloud.conf
+- sudo nano /etc/apache2/sites-available/nextcloud.conf
 
 paste in the code from here:
 (https://github.com/New8ie/nextcloud/)
 
-sudo a2enconf php8.2-fpm
+# Enable PHP Config
 
-sudo a2ensite nextcloud.conf
+- sudo a2enconf php8.2-fpm
+- sudo a2ensite nextcloud.conf
 
 sudo apt-get install imagemagick php8.2-imagick memcached libmemcached-tools php8.2-memcached php8.2-apcu mariadb-server php8.2-gd php8.2-mysql php8.2-curl php8.2-mbstring php8.2-intl php8.2-gmp php8.2-bcmath php8.2-xml php8.2-zip unzip smbclient
 
