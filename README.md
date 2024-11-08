@@ -1,4 +1,6 @@
-# # ###### Nextcloud
+Nextcloud
+===
+<!--rehype:style=font-size: 38px; border-bottom: 0; display: flex; min-height: 260px; align-items: center; justify-content: center;-->
 
 Nextcloud is a great system for setting up your personal cloud and sharing with friends.  It can be frustrating when it is slow.  Let's get nextcloud entirely setup and optimized for performance on your server!
 
